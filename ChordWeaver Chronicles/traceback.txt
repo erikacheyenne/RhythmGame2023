@@ -1,0 +1,40 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 4, in script
+    init python:
+  File "game/script.rpy", line 9, in <module>
+    Song('Isolation', 'audio/Isolation.mp3', 'audio/Isolation.beatmap.txt'),
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 178, in __init__
+    self.onset_times = read_beatmap_file(beatmap_path)[::beatmap_stride]
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 164, in read_beatmap_file
+    with renpy.file(beatmap_path) as f:
+OSError: Couldn't find file 'audio/Isolation.beatmap.txt'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 4, in script
+    init python:
+  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 9, in <module>
+    Song('Isolation', 'audio/Isolation.mp3', 'audio/Isolation.beatmap.txt'),
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 178, in __init__
+    self.onset_times = read_beatmap_file(beatmap_path)[::beatmap_stride]
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 164, in read_beatmap_file
+    with renpy.file(beatmap_path) as f:
+  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/exports.py", line 2608, in file
+    return open_file(fn, encoding=encoding)
+  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/exports.py", line 2590, in open_file
+    rv = renpy.loader.load(fn, directory=directory)
+  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/loader.py", line 833, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'audio/Isolation.beatmap.txt'.
+
+macOS-14.0-arm64-arm-64bit arm64
+Ren'Py 8.1.3.23091805
+ChordWeaver Chronicles 1.0
+Thu Nov  2 12:44:47 2023
