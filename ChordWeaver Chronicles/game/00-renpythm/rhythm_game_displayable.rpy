@@ -211,9 +211,11 @@ init python:
 
             # offset from the left of the screen
             self.x_offset = 400
-            self.track_bar_height = int(config.screen_height * 0.85)
-            self.track_bar_width = 12
-            self.horizontal_bar_height = 8
+            self.y_offset = 200
+            self.track_bar_height = 8
+            self.track_bar_width = int(config.screen_width * 0.85)
+            self.horizontal_bar_height = int(config.screen_height * 0.85)
+            self.horizontal_bar_width = 12
 
             self.note_width = 50 # width of the note image
             # zoom in on the note when it is hittable
@@ -221,6 +223,8 @@ init python:
             # offset the note to the right so it shows at the center of the track
             self.note_xoffset = (self.track_bar_width - self.note_width) / 2
             self.note_xoffset_large = (self.track_bar_width - self.note_width * self.zoom_scale) / 2
+            self.note_yoffset = (self.track_bar_height - self.note_width) / 2
+            self.note_yoffset_large = (self.track_bar_height - self.note_width * self.zoom_scale) / 2
             # place the hit text some spacing from the end of the track bar
             self.hit_text_yoffset = 30
 
@@ -232,15 +236,15 @@ init python:
             # can be used to set difficulty level of the game
             self.note_offset = 3.0
             # speed = distance / time
-            self.note_speed = config.screen_height / self.note_offset
+            self.note_speed = config.screen_width / self.note_offset
 
             # number of track bars
             self.num_track_bars = 4
             # drawing position
-            self.track_bar_spacing = (config.screen_width - self.x_offset * 2) / (self.num_track_bars - 1)
-            # the xoffset of each track bar
-            self.track_xoffsets = {
-            track_idx: self.x_offset + track_idx * self.track_bar_spacing
+            self.track_bar_spacing = (config.screen_height - self.y_offset * 2) / (self.num_track_bars - 1)
+            # the yoffset of each track bar
+            self.track_yoffsets = {
+            track_idx: self.y_offset + track_idx * self.track_bar_spacing
             for track_idx in range(self.num_track_bars)
             }
 
@@ -289,7 +293,7 @@ init python:
             self.good_text_drawable = Text('Good!', color='#fff', size=30) # big text
             self.perfect_text_drawable = Text('Perfect!', color='#fff', size=40) # bigger text
             self.track_bar_drawable = Solid('#fff', xsize=self.track_bar_width, ysize=self.track_bar_height)
-            self.horizontal_bar_drawable = Solid('#fff', xsize=config.screen_width, ysize=self.horizontal_bar_height)
+            self.horizontal_bar_drawable = Solid('#fff', xsize=self.horizontal_bar_width, ysize=self.horizontal_bar_height)
             # map track_idx to the note drawable
             self.note_drawables = {
             0: Image(IMG_LEFT),
@@ -353,13 +357,13 @@ init python:
             # draw the vertical tracks
             for track_idx in range(self.num_track_bars):
                 # look up the offset for drawing
-                x_offset = self.track_xoffsets[track_idx]
+                y_offset = self.track_yoffsets[track_idx]
                 # y = 0 starts from the top
-                render.place(self.track_bar_drawable, x=x_offset, y=0)
+                render.place(self.track_bar_drawable, y=y_offset, x=0)
 
             # draw the horizontal bar to indicate where the track ends
             # x = 0 starts from the left
-            render.place(self.horizontal_bar_drawable, x=0, y=self.track_bar_height)
+            render.place(self.horizontal_bar_drawable, x=int(config.screen_width * 0.85)+10, y=self.track_bar_height)
 
             # draw the notes
             if self.has_game_started:
@@ -380,7 +384,7 @@ init python:
                 # render notes on each track
                 for track_idx in self.active_notes_per_track:
                     # look up track xoffset
-                    x_offset = self.track_xoffsets[track_idx]
+                    x_offset = self.track_yoffsets[track_idx]
 
                     # loop through active notes
                     for onset, note_timestamp in self.active_notes_per_track[track_idx]:
@@ -389,17 +393,20 @@ init python:
                             # zoom in on the note if it is within the hit threshold
                             if abs(curr_time - onset) <= self.hit_threshold:
                                 note_drawable = self.note_drawables_large[track_idx]
-                                note_xoffset = x_offset + self.note_xoffset_large 
+                                # note_yoffset = y_offset + self.note_yoffset_large 
+                                note_yoffset = self.note_yoffset_large 
                             else:
                                 note_drawable = self.note_drawables[track_idx]
-                                note_xoffset = x_offset + self.note_xoffset
+                                # note_yoffset = y_offset + self.note_yoffset
+                                note_yoffset = self.note_yoffset
 
                             # compute where on the vertical axes the note is
                             # the vertical distance from the top that the note has already traveled
                             # is given by time * speed
                             note_distance_from_top = note_timestamp * self.note_speed
-                            y_offset = self.track_bar_height - note_distance_from_top
-                            render.place(note_drawable, x=note_xoffset, y=y_offset)
+                            y_offset = self.track_bar_width - note_distance_from_top
+                            # render.place(note_drawable, x=note_yoffset, y=y_offset)
+                            render.place(note_drawable, x=note_yoffset, y=y_offset)
 
                         elif self.onset_hits[onset] == 'miss':
                             render.place(self.miss_text_drawable, x=x_offset, y=self.track_bar_height + self.hit_text_yoffset)
