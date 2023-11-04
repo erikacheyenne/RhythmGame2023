@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/custom_screens.rpy", line 32: u'background' is not a keyword argument or valid child for the screen statement.
+    background "tutorial_background"
+              ^
+
+Ren'Py Version: Ren'Py 7.4.5.1648
+Sun Jun 20 09:03:29 2021
