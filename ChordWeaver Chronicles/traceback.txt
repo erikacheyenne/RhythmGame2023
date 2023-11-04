@@ -3,64 +3,32 @@
 While running game code:
   File "game/script.rpy", line 36, in script call
     call rhythm_game_entry_label
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 39, in script
-    $ new_score = renpy.call_screen(_screen_name='rhythm_game', rhythm_game_displayable=rhythm_game_displayable)
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 39, in <module>
-    $ new_score = renpy.call_screen(_screen_name='rhythm_game', rhythm_game_displayable=rhythm_game_displayable)
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 406, in render
-    render.place(note_drawable, x=note_xoffset, y=y_offset)
-NameError: name 'note_xoffset' is not defined
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 28, in script
+    $ rhythm_game_displayable = RhythmGameDisplayable(selected_song)
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 28, in <module>
+    $ rhythm_game_displayable = RhythmGameDisplayable(selected_song)
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 293, in __init__
+    self.track_bar_drawable = Solid('#000000', 0.5, xsize=self.track_bar_width, ysize=self.track_bar_height)
+TypeError: __init__() takes 2 positional arguments but 3 were given
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 36, in script call
     call rhythm_game_entry_label
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 39, in script
-    $ new_score = renpy.call_screen(_screen_name='rhythm_game', rhythm_game_displayable=rhythm_game_displayable)
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 28, in script
+    $ rhythm_game_displayable = RhythmGameDisplayable(selected_song)
   File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/ast.py", line 1138, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/python.py", line 1122, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 39, in <module>
-    $ new_score = renpy.call_screen(_screen_name='rhythm_game', rhythm_game_displayable=rhythm_game_displayable)
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/exports.py", line 3347, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/core.py", line 3582, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/core.py", line 4175, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/core.py", line 2782, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/screen.py", line 731, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Users/erikacheyenne/Desktop/Game Development/RenPy/renpy-8.1.3-sdk/renpy/display/layout.py", line 888, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "game/00-renpythm/rhythm_game_displayable.rpy", line 406, in render
-    render.place(note_drawable, x=note_xoffset, y=y_offset)
-NameError: name 'note_xoffset' is not defined
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 28, in <module>
+    $ rhythm_game_displayable = RhythmGameDisplayable(selected_song)
+  File "game/00-renpythm/rhythm_game_displayable.rpy", line 293, in __init__
+    self.track_bar_drawable = Solid('#000000', 0.5, xsize=self.track_bar_width, ysize=self.track_bar_height)
+TypeError: __init__() takes 2 positional arguments but 3 were given
 
 macOS-14.0-arm64-arm-64bit arm64
 Ren'Py 8.1.3.23091805
 ChordWeaver Chronicles 1.0
-Thu Nov  2 15:07:40 2023
+Fri Nov  3 12:57:34 2023

@@ -112,6 +112,8 @@ screen rhythm_game(rhythm_game_displayable):
     key 'K_RIGHT' action NullAction()
 
     add Solid('#000')
+
+    add "images/skyyyy.png"
     add rhythm_game_displayable
 
     vbox:
@@ -288,8 +290,8 @@ init python:
             self.miss_text_drawable = Text('Miss!', color='#fff', size=20) # small text
             self.good_text_drawable = Text('Good!', color='#fff', size=30) # big text
             self.perfect_text_drawable = Text('Perfect!', color='#fff', size=40) # bigger text
-            self.track_bar_drawable = Solid('#fff', xsize=self.track_bar_width, ysize=self.track_bar_height)
-            self.horizontal_bar_drawable = Solid('#fff', xsize=config.screen_width, ysize=self.horizontal_bar_height)
+            self.track_bar_drawable = Solid('#66000000', xsize=self.track_bar_width, ysize=self.track_bar_height)
+            self.horizontal_bar_drawable = Solid('#5d01016b', xsize=config.screen_width, ysize=self.horizontal_bar_height)
             # map track_idx to the note drawable
             self.note_drawables = {
             0: Image(IMG_LEFT),
