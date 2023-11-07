@@ -342,32 +342,63 @@ style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
 
 
-## Main Menu screen ############################################################
+## Custom Main Menu ############################################################
 ##
-## Used to display the main menu when Ren'Py starts.
+## Tanix Custom Main menu
+## Change Screen Main Menu
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+transform zoom1:
+    ease 1.0 zoom 1.04 rotate -3
+    ease 1.0 zoom 1.0 rotate 3
+    repeat
+transform zoom2:
+    ease 0.7 zoom 1.07 rotate -2
+    ease 0.7 zoom 1.0 rotate 2
+    repeat
+transform zoom3:
+    ease 0.7 zoom 1.07 rotate 1
+    ease 0.7 zoom 1.0 rotate -1
+    repeat
+
 screen main_menu():
-
     ## This ensures that any other menu screen is replaced.
+    modal True
     tag menu
-
+    style_prefix "main_menu"
     add gui.main_menu_background
+    text "{size=100}{i}{b}ChordWeaver Chronicles{/b}{/i}{/size}":
+        at zoom2
+        xalign 0.5
+        ypos -400
+    textbutton "{size=60}{outlinecolor=#4169E1}{i}{b}{color=#F0F8FF}Start{/b}{/outlinecolor}":
+        at zoom2
+        xalign 0.5
+        yalign 0.6
+        action Start()
 
+
+    textbutton "{size=60}{b}{i}{outlinecolor=#C42B0B}{color=#FFDAB9}Help{/outlinecolor}{/b}":
+        at zoom3
+        xalign 0.5
+        yalign 0.77
+        action  ShowMenu("preferences")
+    textbutton "{size=60}{outlinecolor=#DAA520}{i}{b}{color=#FFFFF0}Exit{/outlinecolor}{/b}":
+        at zoom1
+        xalign 0.5
+        yalign 0.92
+        action Quit(confirm=not main_menu)
     ## This empty frame darkens the main menu.
     frame:
-        style "main_menu_frame"
-
+        pass
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    #use navigation
 
     if gui.show_name:
 
         vbox:
-            style "main_menu_vbox"
-
             text "[config.name!t]":
                 style "main_menu_title"
 
@@ -382,17 +413,15 @@ style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
 style main_menu_frame:
-    xsize 420
+    xsize 280
     yfill True
-
-    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
-    xoffset -30
-    xmaximum 1200
+    xoffset -20
+    xmaximum 800
     yalign 1.0
-    yoffset -30
+    yoffset -20
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)

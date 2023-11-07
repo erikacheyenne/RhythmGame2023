@@ -28,6 +28,7 @@ class base_class(renpy.python.RevertableObject):
     def __setstate__(self, new_dict):
         self.__dict__.update(new_dict)
 
+
 class core(base_class):
     """Game Core Class
     """
@@ -91,15 +92,16 @@ class core(base_class):
         self.rhythm_displayable.track_indices = self.content["songs"][song]["tracks"]
         self.rhythm_displayable.audio_path = self.content["songs"][song]["file"]
         self.rhythm_displayable.note_drawables = {0: Image(self.get_image("left.png")),
-            1: Image(self.get_image("up.png")),
-            2: Image(self.get_image("down.png")),
-            3: Image(self.get_image("right.png")),}
+                                                  1: Image(self.get_image("up.png")),
+                                                  2: Image(self.get_image("down.png")),
+                                                  3: Image(self.get_image("right.png")), }
         self.rhythm_displayable.set_data()
         self.rhythm_displayable.play_music()
         return self.rhythm_displayable
 
     def final_score(self, score):
         return round(score / float(self.max_score) * 100)
+
 
 class RhythmGameDisplayable(renpy.Displayable):
 
@@ -304,6 +306,7 @@ class RhythmGameDisplayable(renpy.Displayable):
                 break
 
         return active_notes
+
 
 game_core = core()
 config.developer = True

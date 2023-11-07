@@ -1,12 +1,3 @@
-define IMG_DIR = 'images/'
-define IMG_UP = IMG_DIR + 'up.png'
-define IMG_LEFT = IMG_DIR + 'left.png'
-define IMG_RIGHT = IMG_DIR + 'right.png'
-define IMG_DOWN = IMG_DIR + 'down.png'
-
-# music channel for renpy.play
-define CHANNEL_RHYTHM_GAME = 'CHANNEL_RHYTHM_GAME'
-
 # scores for Good and Perfect hits
 define SCORE_GOOD = 60
 define SCORE_PERFECT = 100
