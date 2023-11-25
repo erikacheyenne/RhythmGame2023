@@ -1,68 +1,52 @@
-Mon Nov  6 07:15:48 2023
+Sat Nov 25 18:21:40 2023
 Windows-10-10.0.19041
 Ren'Py 8.1.1.23060707
  
 
 Bootstrap to the start of init.init. took 0.05s
 Early init. took 0.00s
-Loader init. took 0.15s
-Loading error handling. took 0.04s
-Loading script. took 0.42s
-Loading save slot metadata. took 0.09s
-Loading persistent. took 0.00s
-
-File "game/custom/core_ren.py", line 97: invalid syntax
-            self.rhythm_displayable.channel =
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start. took 0.29s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'ATI Technologies Inc.'"
-Renderer: b'Radeon RX 5500 XT'
-Version: b'4.6.0 Compatibility Profile Context 22.20.27.09.230330'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1607, 904) drawable=(1607, 904)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init. took 19.72s
-Early init. took 0.00s
-Loader init. took 0.19s
-Loading error handling. took 0.06s
-Loading script. took 0.33s
+Loader init. took 0.16s
+Loading error handling. took 0.05s
+Loading script. took 0.47s
 Loading save slot metadata. took 0.06s
 Loading persistent. took 0.00s
-2023-11-06 07:16:08,436 INFO Starting Game
-Running init code. took 0.13s
-Loading analysis data. took 0.01s
+2023-11-25 18:21:40,905 INFO Starting Game
+2023-11-25 18:21:40,906 INFO Char {'color': '#c855dd'}
+2023-11-25 18:21:40,906 INFO images/characters/Aria/side_Aria Anxious.png
+2023-11-25 18:21:40,906 INFO images/characters/Aria/side_Aria Happy.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_Aria Neutral.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_Aria Nocturne Stressed.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_Aria Shocked.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_side_Aria Anxious.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_side_Aria Happy.png
+2023-11-25 18:21:40,907 INFO images/characters/Aria/side_side_Aria Neutral.png
+2023-11-25 18:21:40,908 INFO images/characters/Aria/side_side_Aria Shocked.png
+2023-11-25 18:21:40,908 INFO images/characters/Aria/side_side_Aria Stressed.png
+Running init code. took 0.14s
+Loading analysis data. took 0.02s
 Analyze and compile ATL. took 0.00s
 Reloading save slot metadata. took 0.05s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\tanix\\AppData\\Roaming/RenPy/backups\\ChordWeaver Chronicles':
-Dump and make backups. took 0.09s
+Dump and make backups. took 0.11s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
 Initial gc. took 0.02s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object. took 0.00s
+Creating interface object. took 0.01s
 Cleaning stores took 0.00s
-Init translation took 0.05s
+Init translation took 0.04s
 Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.10s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.08s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.10s
+Interface start. took 0.18s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -70,7 +54,104 @@ swap interval: 1 frames
 Windowed mode.
 Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'Radeon RX 5500 XT'
-Version: b'4.6.0 Compatibility Profile Context 22.20.27.09.230330'
+Version: b'4.6.0 Compatibility Profile Context 23.11.1.231020'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1607, 904) drawable=(1607, 904)
 Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 41, in script
+    show image game_core.chars["Aria"]["Stressed"] at right with dissolve
+  File "S:\Software\renpy-8.1.1-sdk\renpy\ast.py", line 1428, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "S:\Software\renpy-8.1.1-sdk\renpy\ast.py", line 1384, in show_imspec
+    expression = renpy.python.py_eval(expression)
+  File "S:\Software\renpy-8.1.1-sdk\renpy\python.py", line 1153, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "S:\Software\renpy-8.1.1-sdk\renpy\python.py", line 1146, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 41, in <module>
+    show image game_core.chars["Aria"]["Stressed"] at right with dissolve
+KeyError: 'Stressed'
+
+While running game code:
+  File "game/script.rpy", line 41, in script
+    show image game_core.chars["Aria"]["Stressed"] at right with dissolve
+  File "game/script.rpy", line 41, in <module>
+    show image game_core.chars["Aria"]["Stressed"] at right with dissolve
+KeyError: 'Stressed'
+Resetting cache.
+Bootstrap to the start of init.init. took 77.07s
+Early init. took 0.00s
+Loader init. took 0.15s
+Loading error handling. took 0.05s
+Loading script. took 0.29s
+Loading save slot metadata. took 0.05s
+Loading persistent. took 0.00s
+2023-11-25 18:22:57,674 INFO Starting Game
+2023-11-25 18:22:57,674 INFO Starting Game
+2023-11-25 18:22:57,675 INFO Char {'color': '#c855dd'}
+2023-11-25 18:22:57,675 INFO Char {'color': '#c855dd'}
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Anxious.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Anxious.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Happy.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Happy.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Neutral.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Neutral.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Shocked.png
+2023-11-25 18:22:57,676 INFO images/characters/Aria/side_Aria Shocked.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_Aria Stressed.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_Aria Stressed.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_side_Aria Anxious.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_side_Aria Anxious.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_side_Aria Happy.png
+2023-11-25 18:22:57,677 INFO images/characters/Aria/side_side_Aria Happy.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Neutral.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Neutral.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Shocked.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Shocked.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Stressed.png
+2023-11-25 18:22:57,678 INFO images/characters/Aria/side_side_Aria Stressed.png
+Running init code. took 0.06s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.05s
+Index archives took 0.00s
+Dump and make backups. took 0.09s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.10s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.06s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'Radeon RX 5500 XT'
+Version: b'4.6.0 Compatibility Profile Context 23.11.1.231020'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1607, 904) drawable=(1607, 904)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.01s
+Load screen analysis took 0.03s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

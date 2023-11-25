@@ -51,9 +51,15 @@ class core(base_class):
 
         self.content = self.load_content("refdata.json")
 
+        self.chars = {"Aria": {"color": "#c855dd"}
+                      }
+        self.init_chars()
+
         self.score_good = 60
         self.score_perfect = 100
         self.beatmap_stride = 2
+
+
 
     def start_log(self):
         l = logging.getLogger("tanix_log")
@@ -101,6 +107,17 @@ class core(base_class):
 
     def final_score(self, score):
         return round(score / float(self.max_score) * 100)
+
+    def init_chars(self):
+        for key, value in self.chars.items():
+            self.tanix_log.info(f"Char {value}")
+            for image_name, image_path in self.images.items():
+                if f"images/characters/{key}" in image_path:
+                    expression = image_name.replace(f"{key} ", "").replace(f".png", "")
+                    self.chars[key][expression] = image_path
+                    self.tanix_log.info(image_path.replace(f"{key} ", f"side_{key} "))
+                    renpy.image(f"side {key} {expression}", image_path.replace(f"{key} ", f"side_{key} "))
+                    self.chars[key]["char"] = Character(key, who_color=value["color"], image=key)
 
 
 class RhythmGameDisplayable(renpy.Displayable):
